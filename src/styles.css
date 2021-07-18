@@ -290,8 +290,8 @@ body {
 }
 
 .filters {
-	margin: 0;
-	padding: 0;
+	margin: 0px 0px;
+	padding: 0px 10px;
 	list-style: none;
 	position: absolute;
 	right: 0;
@@ -321,7 +321,7 @@ body {
 
 .clear-completed,
 html .clear-completed:active {
-	float: right;
+	/*float: right;*/
 	position: relative;
 	line-height: 20px;
 	text-decoration: none;

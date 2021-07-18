@@ -38,10 +38,11 @@
 			</section>
 			<!-- This footer should hidden by default and shown when there are todos -->
 			<footer class="footer">
-				<!-- This should be `0 items left` by default -->
-				<span class="todo-count"><strong>0</strong> pendiente(s)</span>
+				
 				<!-- Remove this if you don't implement routing -->
 				<ul class="filters">
+					<!-- This should be `0 items left` by default -->
+					<span class="todo-count "><strong>0</strong> pendiente(s)</span>
 					<li>
 						<a class="selected filtro" href="#/">Todos</a>
 					</li>
@@ -51,9 +52,10 @@
 					<li>
 						<a class="filtro" href="#/completed">Completados</a>
 					</li>
+					<!-- Hidden if no completed items are left ↓ -->
+					<button class="clear-completed">Borrar completados</button>
 				</ul>
-				<!-- Hidden if no completed items are left ↓ -->
-				<button class="clear-completed">Borrar completados</button>
+				
 			</footer>
 		</section>
 		<footer class="info">

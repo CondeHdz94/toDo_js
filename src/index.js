@@ -12,7 +12,7 @@ taskList.toDos.forEach( toDoForEach => crearToDoHtml( toDoForEach ) );
 /** Esta forma se puede usar sí el primer argumento en el método está llamando a esa función SÍ SOLO ES UN ARGUMOENTO **/
 //taskList.toDos.forEach( crearToDoHtml ); 
 
-
-
 //console.log(taskList.toDos);
-taskList.toDos[0].printClass(); /// Ya se puede tratar cómo objeto
+if( taskList.toDos.length > 0 ){
+    taskList.toDos[0].printClass(); /// Ya se puede tratar cómo objeto
+}

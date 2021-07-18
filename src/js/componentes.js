@@ -11,6 +11,8 @@ const clearAllToDo  = document.querySelector(".clear-completed");
 const ulFilters     = document.querySelector(".filters");
 const aFilters      = document.querySelectorAll(".filtro");
 
+var cantPendient    = document.querySelector(".todo-count");
+
 
 export const crearToDoHtml = ( toDo ) =>{
     
@@ -38,13 +40,17 @@ export const crearToDoHtml = ( toDo ) =>{
 ///* EVENTOS *///
 txtInput.addEventListener('keyup', ( event ) => {
 
-    if(event.keyCode == 13 && txtInput.value.length > 0){
+    if( event.keyCode == 13 && txtInput.value.trim().length > 0 ){
 
         const newTask = new ToDo(txtInput.value);
         taskList.nuevoTodo(newTask);
         crearToDoHtml(newTask);
 
         txtInput.value = "";
+
+        var count = parseInt(cantPendient.children[0].textContent);
+        count++;
+        cantPendient.children[0].innerText = count;
 
     }
     
@@ -57,6 +63,7 @@ divToDoList.addEventListener('click', ( event ) =>{
     const nameElement = event.target.localName;
     const toDoElement = event.target.parentElement.parentElement; // .parentElement = para seleccionar el padre de ese elemento, un paso atrás del elemento
     const toDoId      = toDoElement.getAttribute('data-id');
+    
 
     if( nameElement.includes('input')){ // Click en el check
 
@@ -67,7 +74,20 @@ divToDoList.addEventListener('click', ( event ) =>{
 
         taskList.eliminarTodo( toDoId );
         divToDoList.removeChild( toDoElement );
+
     }
+
+    var count = parseInt(cantPendient.children[0].textContent);
+
+    if ( toDoElement.classList[0] == 'completed' && event.target.localName == 'button' ) {
+        count = count;
+    } else if ( toDoElement.classList[0] == 'completed' && event.target.localName == 'input' || toDoElement.classList[0] != 'completed' && event.target.localName == 'button'){
+        count--;
+    } else if ( toDoElement.classList[0] != 'completed' && event.target.localName == 'input' ){
+        count++;
+    }
+
+    cantPendient.children[0].innerText = count;
 
 });
 
@@ -82,7 +102,7 @@ clearAllToDo.addEventListener('click', ( event ) =>{
 
         if( element.classList.contains('completed') ){
 
-             divToDoList.removeChild( element );
+            divToDoList.removeChild( element );
 
         }
         
@@ -131,7 +151,6 @@ ulFilters.addEventListener('click', ( event ) =>{
         }
 
     }
-
     
 
 });

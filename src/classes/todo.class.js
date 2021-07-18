@@ -23,7 +23,7 @@ export class ToDo {
     }
 
     printClass(){
-        
+
         console.log(`${this.tarea} - ${this.id}`);
 
     }
